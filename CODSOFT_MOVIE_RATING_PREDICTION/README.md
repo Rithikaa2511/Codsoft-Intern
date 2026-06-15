@@ -1,12 +1,18 @@
-🎬 Movie Rating Prediction using Machine Learning
+# 🎬 Movie Rating Prediction using Machine Learning
 
-📖 Project Overview
+## 📖 Project Overview
+
 Movie Rating Prediction is a Machine Learning project that predicts the rating of a movie based on its features such as Genre, Director, Actors, Duration, and Votes. The project demonstrates data preprocessing, feature encoding, model training, prediction, and evaluation using the Random Forest Regression algorithm.
 
-🎯 Objective
+---
+
+## 🎯 Objective
+
 The objective of this project is to build a machine learning model that can accurately predict movie ratings based on various movie attributes.
 
-🛠️ Technologies Used
+---
+
+## 🛠️ Technologies Used
 
 - Python
 - Pandas
@@ -14,7 +20,9 @@ The objective of this project is to build a machine learning model that can accu
 - Scikit-learn
 - Random Forest Regressor
 
- 📂 Dataset Features
+---
+
+## 📂 Dataset Features
 
 The dataset contains the following attributes:
 
@@ -27,7 +35,9 @@ The dataset contains the following attributes:
 - Votes
 - Rating (Target Variable)
 
-🔄 Project Workflow
+---
+
+## 🔄 Project Workflow
 
 ### 1. Data Collection
 The movie dataset is loaded using Pandas.
@@ -51,11 +61,15 @@ The model performance is evaluated using:
 - Mean Absolute Error (MAE)
 - R² Score
 
-🤖 Machine Learning Algorithm
+---
+
+## 🤖 Machine Learning Algorithm
 
 ### Random Forest Regressor
 
 Random Forest Regressor is an ensemble learning algorithm that combines multiple decision trees to improve prediction accuracy and reduce overfitting.
+
+---
 
 ## 📊 Results
 
@@ -76,10 +90,13 @@ Random Forest Regressor is an ensemble learning algorithm that combines multiple
 | Mean Absolute Error (MAE) | 0.98 |
 | R² Score | 0.17 |
 
+---
 
 ## ✅ Conclusion
 
 The Movie Rating Prediction model was successfully developed using Machine Learning techniques. The Random Forest Regressor was able to predict movie ratings with reasonable accuracy. The project demonstrates the complete machine learning workflow from preprocessing to model evaluation.
+
+---
 
 ## 🚀 Future Enhancements
 
@@ -89,11 +106,3 @@ The Movie Rating Prediction model was successfully developed using Machine Learn
 - Improve prediction accuracy
 - Deploy the model as a web application
 
-
-## 👩‍💻 Author
-
-**Rithikaa S S**
-
-B.Sc. Artificial Intelligence and Data Science
-
-CodSoft Internship Project
