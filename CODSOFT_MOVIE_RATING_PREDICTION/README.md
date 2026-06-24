@@ -1,4 +1,4 @@
-# 🎬 Movie Rating Prediction using Machine Learning
+# 🎬 Task 2 : Movie Rating Prediction using Machine Learning
 
 ## 📖 Project Overview
 
