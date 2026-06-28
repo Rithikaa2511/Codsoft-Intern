@@ -1,0 +1,97 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    classification_report,
+    confusion_matrix,
+)
+
+from imblearn.over_sampling import RandomOverSampler
+
+# -----------------------------
+# Load Dataset
+# -----------------------------
+data = pd.read_csv("creditcard.csv", sep="\t", nrows=20000)
+
+print("Dataset Loaded Successfully!\n")
+print("Columns:")
+print(data.columns)
+print("\nFirst 5 Rows:")
+print(data.head())
+
+# -----------------------------
+# Features and Target
+# -----------------------------
+X = data.drop("Class", axis=1)
+y = data["Class"]
+
+# -----------------------------
+# Normalize Amount Column
+# -----------------------------
+scaler = StandardScaler()
+X["Amount"] = scaler.fit_transform(X[["Amount"]])
+
+# -----------------------------
+# Split Dataset
+# -----------------------------
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+# -----------------------------
+# Handle Class Imbalance
+# -----------------------------
+ros = RandomOverSampler(random_state=42)
+X_train, y_train = ros.fit_resample(X_train, y_train)
+
+# -----------------------------
+# Train Random Forest Model
+# -----------------------------
+model = RandomForestClassifier(n_estimators=20, random_state=42)
+model.fit(X_train, y_train)
+
+# -----------------------------
+# Predict Test Data
+# -----------------------------
+y_pred = model.predict(X_test)
+
+# -----------------------------
+# Model Evaluation
+# -----------------------------
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+print("\n========== MODEL PERFORMANCE ==========")
+print(f"Accuracy : {accuracy * 100:.2f}%")
+print(f"Precision: {precision:.2f}")
+print(f"Recall   : {recall:.2f}")
+print(f"F1-Score : {f1:.2f}")
+
+print("\n========== CLASSIFICATION REPORT ==========")
+print(classification_report(y_test, y_pred))
+
+# -----------------------------
+# Confusion Matrix
+# -----------------------------
+cm = confusion_matrix(y_test, y_pred)
+
+plt.figure(figsize=(6, 5))
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
+plt.title("Confusion Matrix")
+plt.xlabel("Predicted Label")
+plt.ylabel("True Label")
+plt.show()
